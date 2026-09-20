@@ -43,3 +43,16 @@ Appendix A of the proposal lists outstanding pre-submission verification items
 (reading Mitra et al. 2024 in full, completing the minimum-detectable-energy-difference
 pilot, confirming a couple of reference DOIs/venues). Check those are closed before
 this is sent anywhere.
+
+**[`validation/`](validation/)** contains real, hardware-executed work against these
+items, run on the target laptop (i5-13450HX / RTX 3050 6GB / 24GB RAM): a full
+environment/execution-feasibility preflight, an initial run of the energy-measurement
+pilot (with a real NVML polling-interval artifact found and corrected), a complete
+VGG-19-BN reconstruction of Mitra et al. (2024) including CIFAR-10-C corruption
+evaluation, and measured per-epoch training costs for ResNet-18 and MobileNetV3-Small
+used to check the proposal's 10-seed grid against a normal thesis timeline. See
+[`validation/README.md`](validation/README.md) for the full index and key findings —
+this closes the minimum-detectable-energy-difference pilot item at pilot scale (not
+yet the 30-independent-pair confirmation the harness itself requires before treating
+any cell as a validated candidate) and produces the first real numbers behind Mitra
+et al. reading item above.

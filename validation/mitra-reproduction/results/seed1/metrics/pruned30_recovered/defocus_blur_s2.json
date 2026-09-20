@@ -1,0 +1,195 @@
+{
+  "n": 10000,
+  "accuracy": 0.9203,
+  "equal_mass": {
+    "ece": 0.06307349322438238,
+    "bins": [
+      {
+        "bin": 0,
+        "count": 1000,
+        "accuracy": 0.54,
+        "confidence": 0.8401977443695068,
+        "min_confidence": 0.35008955001831055,
+        "max_confidence": 0.9865865707397461,
+        "contribution": 0.030019774436950676
+      },
+      {
+        "bin": 1,
+        "count": 1000,
+        "accuracy": 0.802,
+        "confidence": 0.9957719079256058,
+        "min_confidence": 0.9866557121276855,
+        "max_confidence": 0.9988052845001221,
+        "contribution": 0.019377190792560575
+      },
+      {
+        "bin": 2,
+        "count": 1000,
+        "accuracy": 0.929,
+        "confidence": 0.999241815328598,
+        "min_confidence": 0.9988076686859131,
+        "max_confidence": 0.9994688630104065,
+        "contribution": 0.007024181532859797
+      },
+      {
+        "bin": 3,
+        "count": 1000,
+        "accuracy": 0.966,
+        "confidence": 0.9995662034749985,
+        "min_confidence": 0.9994688630104065,
+        "max_confidence": 0.9996402263641357,
+        "contribution": 0.0033566203474998503
+      },
+      {
+        "bin": 4,
+        "count": 1000,
+        "accuracy": 0.987,
+        "confidence": 0.9996806316971779,
+        "min_confidence": 0.9996405839920044,
+        "max_confidence": 0.9997128844261169,
+        "contribution": 0.0012680631697177926
+      },
+      {
+        "bin": 5,
+        "count": 1000,
+        "accuracy": 0.989,
+        "confidence": 0.9997356050014495,
+        "min_confidence": 0.9997128844261169,
+        "max_confidence": 0.9997568726539612,
+        "contribution": 0.0010735605001449544
+      },
+      {
+        "bin": 6,
+        "count": 1000,
+        "accuracy": 0.994,
+        "confidence": 0.9997742927074432,
+        "min_confidence": 0.9997568726539612,
+        "max_confidence": 0.999790608882904,
+        "contribution": 0.000577429270744323
+      },
+      {
+        "bin": 7,
+        "count": 1000,
+        "accuracy": 0.998,
+        "confidence": 0.999805297255516,
+        "min_confidence": 0.9997907280921936,
+        "max_confidence": 0.9998190999031067,
+        "contribution": 0.00018052972555160363
+      },
+      {
+        "bin": 8,
+        "count": 1000,
+        "accuracy": 0.998,
+        "confidence": 0.9998347914218902,
+        "min_confidence": 0.9998190999031067,
+        "max_confidence": 0.9998506307601929,
+        "contribution": 0.00018347914218902472
+      },
+      {
+        "bin": 9,
+        "count": 1000,
+        "accuracy": 1.0,
+        "confidence": 0.9998733569383621,
+        "min_confidence": 0.9998506307601929,
+        "max_confidence": 0.9999388456344604,
+        "contribution": 1.2664306163789885e-05
+      }
+    ],
+    "scheme": "equal_mass",
+    "n_bins": 10,
+    "n": 10000
+  },
+  "equal_width": {
+    "ece": 0.06328162129521366,
+    "bins": [
+      {
+        "bin": 0,
+        "count": 0,
+        "accuracy": null,
+        "confidence": null,
+        "contribution": 0.0
+      },
+      {
+        "bin": 1,
+        "count": 0,
+        "accuracy": null,
+        "confidence": null,
+        "contribution": 0.0
+      },
+      {
+        "bin": 2,
+        "count": 0,
+        "accuracy": null,
+        "confidence": null,
+        "contribution": 0.0
+      },
+      {
+        "bin": 3,
+        "count": 5,
+        "accuracy": 0.6,
+        "confidence": 0.3665433168411255,
+        "min_confidence": 0.35008955001831055,
+        "max_confidence": 0.38721850514411926,
+        "contribution": 0.00011672834157943723
+      },
+      {
+        "bin": 4,
+        "count": 28,
+        "accuracy": 0.39285714285714285,
+        "confidence": 0.464679343359811,
+        "min_confidence": 0.40674424171447754,
+        "max_confidence": 0.49679794907569885,
+        "contribution": 0.00020110216140747076
+      },
+      {
+        "bin": 5,
+        "count": 83,
+        "accuracy": 0.3253012048192771,
+        "confidence": 0.5517469493739576,
+        "min_confidence": 0.5014002919197083,
+        "max_confidence": 0.5996426343917847,
+        "contribution": 0.0018794996798038484
+      },
+      {
+        "bin": 6,
+        "count": 99,
+        "accuracy": 0.41414141414141414,
+        "confidence": 0.6495698244884761,
+        "min_confidence": 0.6001600623130798,
+        "max_confidence": 0.6998406052589417,
+        "contribution": 0.0023307412624359136
+      },
+      {
+        "bin": 7,
+        "count": 99,
+        "accuracy": 0.5353535353535354,
+        "confidence": 0.7541290750407209,
+        "min_confidence": 0.700106680393219,
+        "max_confidence": 0.7987371683120728,
+        "contribution": 0.002165877842903137
+      },
+      {
+        "bin": 8,
+        "count": 172,
+        "accuracy": 0.5058139534883721,
+        "confidence": 0.8561976091113201,
+        "min_confidence": 0.8000479340553284,
+        "max_confidence": 0.8994094729423523,
+        "contribution": 0.006026598876714706
+      },
+      {
+        "bin": 9,
+        "count": 9514,
+        "accuracy": 0.943977296615514,
+        "confidence": 0.9971211615833184,
+        "min_confidence": 0.9006160497665405,
+        "max_confidence": 0.9999388456344604,
+        "contribution": 0.05056107313036914
+      }
+    ],
+    "scheme": "equal_width",
+    "n_bins": 10,
+    "n": 10000
+  },
+  "prediction_sha256": "def9460b453ef491b6df5cb32f59913611f441b1e8159ce5d94ef61b76ffd55e"
+}

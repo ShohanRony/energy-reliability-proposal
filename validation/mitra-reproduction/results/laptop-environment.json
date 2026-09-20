@@ -1,0 +1,17 @@
+{
+  "utc": "2026-09-20T06:18:50.387371+00:00",
+  "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+  "cpu_count": 16,
+  "nvidia_smi_available": true,
+  "modules": {
+    "numpy": true,
+    "torch": true,
+    "torchvision": true
+  },
+  "is_user_rtx3050": false,
+  "mem_total": "MemTotal:       24373188 kB",
+  "torch_version": "2.5.1+cu124",
+  "cuda_available": true,
+  "gpu_query": "name, memory.total [MiB]\nNVIDIA GeForce RTX 3050 6GB Laptop GPU, 6144 MiB\n"
+}

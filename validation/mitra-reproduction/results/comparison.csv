@@ -1,0 +1,7 @@
+configuration,dataset,metric,paper_value,our_value,status,reference
+baseline,CIFAR10,accuracy,,,not_assessable,Figure 1 VGG weight-pruning panel
+baseline,CIFAR10,ece,,,not_assessable,Figure 1 VGG weight-pruning panel
+pruned30_recovered,CIFAR10,accuracy,,,not_assessable,Figure 1 VGG weight-pruning panel
+pruned30_recovered,CIFAR10,ece,,,not_assessable,Figure 1 VGG weight-pruning panel
+pruned30_recovered,CIFAR10C_severity_1_to_5,mpc,,,not_assessable,Figure 2 VGG weight-pruning panel
+pruned30_recovered,CIFAR10C_severity_1_to_5,ece,,,not_assessable,Figure 3 VGG weight-pruning panel

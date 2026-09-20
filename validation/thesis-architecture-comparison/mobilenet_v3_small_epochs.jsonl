@@ -1,0 +1,5 @@
+{"arch": "mobilenet_v3_small", "epoch": 1, "loss": 2.000722318391641, "train_accuracy": 0.23625560179257363, "examples": 49984, "seconds": 7.348110713999631, "gpu_peak_allocated_bytes": 55532032}
+{"arch": "mobilenet_v3_small", "epoch": 2, "loss": 1.9473288240872333, "train_accuracy": 0.26394446222791296, "examples": 49984, "seconds": 6.964534855000238, "gpu_peak_allocated_bytes": 55532032}
+{"arch": "mobilenet_v3_small", "epoch": 3, "loss": 1.892466657445617, "train_accuracy": 0.29639484635083224, "examples": 49984, "seconds": 7.013130076997186, "gpu_peak_allocated_bytes": 55532032}
+{"arch": "mobilenet_v3_small", "epoch": 4, "loss": 1.7240963885787202, "train_accuracy": 0.3642965749039693, "examples": 49984, "seconds": 7.094852701000491, "gpu_peak_allocated_bytes": 55532032}
+{"arch": "mobilenet_v3_small", "epoch": 5, "loss": 1.9362385050130104, "train_accuracy": 0.2767485595390525, "examples": 49984, "seconds": 6.978356399999029, "gpu_peak_allocated_bytes": 55532032}

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+data/
+external/
+results/**/checkpoints/
+results/**/predictions/
+*.zip
+# Small real logs, summaries and failure outputs remain tracked.
+# Deliberately use git add -f for future per-example predictions after size review.

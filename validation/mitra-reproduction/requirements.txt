@@ -1,0 +1,6 @@
+# Proposed compatible environment, NOT installed/tested for the CNN in this session.
+# Install the CUDA 12.4 wheel pair first using the command in README.md.
+torch==2.5.1
+torchvision==0.20.1
+numpy==1.26.4
+pillow==11.0.0

@@ -1,0 +1,6 @@
+{
+  "status": "passed_forward_backward_only",
+  "loss": 2.3152222633361816,
+  "gpu_peak_allocated_bytes": 495475712,
+  "benchmark_result": false
+}

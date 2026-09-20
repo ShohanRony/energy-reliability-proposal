@@ -1,0 +1,5 @@
+{"arch": "resnet18", "epoch": 1, "loss": 2.013277859449692, "train_accuracy": 0.283050576184379, "examples": 49984, "seconds": 101.0163467600014, "gpu_peak_allocated_bytes": 447473664}
+{"arch": "resnet18", "epoch": 2, "loss": 1.501358322083721, "train_accuracy": 0.449463828425096, "examples": 49984, "seconds": 100.73305080299906, "gpu_peak_allocated_bytes": 447473664}
+{"arch": "resnet18", "epoch": 3, "loss": 1.1913599821425278, "train_accuracy": 0.5731033930857875, "examples": 49984, "seconds": 100.73260635299994, "gpu_peak_allocated_bytes": 447473664}
+{"arch": "resnet18", "epoch": 4, "loss": 0.9262654110503105, "train_accuracy": 0.6705145646606914, "examples": 49984, "seconds": 100.93396724800004, "gpu_peak_allocated_bytes": 447473664}
+{"arch": "resnet18", "epoch": 5, "loss": 0.7540733162099055, "train_accuracy": 0.7358754801536491, "examples": 49984, "seconds": 100.77667977599958, "gpu_peak_allocated_bytes": 447473664}

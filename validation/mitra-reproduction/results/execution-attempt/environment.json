@@ -1,0 +1,40 @@
+{
+  "utc": "2026-09-19T23:50:31.231300+00:00",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "cpu_count": 9,
+  "nvidia_smi_available": false,
+  "modules": {
+    "numpy": true,
+    "torch": false,
+    "torchvision": false
+  },
+  "is_user_rtx3050": false,
+  "mem_total": "MemTotal:       16399688 kB",
+  "network": [
+    {
+      "url": "https://arxiv.org/pdf/2405.20876",
+      "ok": false,
+      "exception": "HTTPError",
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://pypi.org/simple/torch/",
+      "ok": false,
+      "exception": "HTTPError",
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://github.com/Eric-mingjie/rethinking-network-pruning",
+      "ok": false,
+      "exception": "HTTPError",
+      "message": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz",
+      "ok": false,
+      "exception": "HTTPError",
+      "message": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

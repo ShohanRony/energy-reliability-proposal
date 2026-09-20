@@ -1,0 +1,9 @@
+{
+  "phase": "baseline",
+  "epoch": 126,
+  "lr": 0.001,
+  "loss": 0.004665475797243416,
+  "train_accuracy": 0.9987,
+  "examples": 50000,
+  "seconds": 66.28532213200015
+}

@@ -1,0 +1,15 @@
+test_binning_changes_answer (test_metrics.MetricsTest.test_binning_changes_answer) ... ok
+test_calibrated_single_bin (test_metrics.MetricsTest.test_calibrated_single_bin) ... ok
+test_confident_wrong (test_metrics.MetricsTest.test_confident_wrong) ... ok
+test_corruption_summary (test_metrics.MetricsTest.test_corruption_summary) ... ok
+test_invalid_input (test_metrics.MetricsTest.test_invalid_input) ... ok
+test_perfect (test_metrics.MetricsTest.test_perfect) ... ok
+test_probabilities (test_metrics.MetricsTest.test_probabilities) ... ok
+test_right_closed_boundaries (test_metrics.MetricsTest.test_right_closed_boundaries) ... ok
+test_ties_and_empty_bins (test_metrics.MetricsTest.test_ties_and_empty_bins) ... ok
+test_mask_survives_optimizer_updates (test_torch_pruning.PruningTest.test_mask_survives_optimizer_updates) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.425s
+
+OK

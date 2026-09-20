@@ -1,0 +1,9 @@
+test_idle_duration_and_detection (test_pilot.MathTests.test_idle_duration_and_detection) ... ok
+test_power_integral (test_pilot.MathTests.test_power_integral) ... ok
+test_reset_rejected (test_pilot.MathTests.test_reset_rejected) ... ok
+test_wrap (test_pilot.MathTests.test_wrap) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

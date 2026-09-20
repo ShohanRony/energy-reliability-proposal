@@ -1,0 +1,86 @@
+{
+  "status": "completed_reconstruction_clean_and_corruption",
+  "utc": "2026-09-20T13:40:57.403933+00:00",
+  "kind": "independent_reconstruction_not_authors_exact_run",
+  "configuration": {
+    "architecture": "upstream_vgg19_bn",
+    "seed": 1,
+    "batch_size": 64,
+    "baseline_epochs": 160,
+    "recovery_epochs": 40,
+    "sparsity": 0.3,
+    "momentum": 0.9,
+    "weight_decay": 0.0001,
+    "normalization_mean": [
+      0.4914,
+      0.4822,
+      0.4465
+    ],
+    "normalization_std": [
+      0.2023,
+      0.1994,
+      0.201
+    ],
+    "augmentation": "RandomCrop(32,padding=4); RandomHorizontalFlip(p=0.5)",
+    "baseline_lr_one_based": "1-79:0.1;80-119:0.01;120-160:0.001",
+    "fine_tune_lr": 0.001,
+    "checkpoint_selection": "last_epoch",
+    "optimizer_reset_on_prune": true,
+    "primary_ece": "equal_mass_10_stable_sorted_ties_split",
+    "secondary_ece": "equal_width_10_right_closed",
+    "recovery_control": false,
+    "precision": "FP32_no_TF32_no_AMP"
+  },
+  "upstream": {
+    "url": "https://github.com/Eric-mingjie/rethinking-network-pruning",
+    "revision": "2ac473d70a09810df888e932bb394f225f9ed2d1",
+    "model_source_sha256": {
+      "models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "models/cifar/__init__.py": "1b715a8825ad8c5bc392062cdf1ac73d6e4531839d92dc7d8fcdc68fed9453eb",
+      "models/cifar/alexnet.py": "0e354b04ea6402f948f4ee00346cc195d355b5bfa704f2ffecd83ec66d90f10c",
+      "models/cifar/densenet.py": "3f968acad23a656db19ce66baf2802a9e1be385e832955e8d478d2798a17051d",
+      "models/cifar/preresnet.py": "cf19368f6768ab8ddde192e1b5bcf2042ab73f6f48a295cb304bf83511e5d55c",
+      "models/cifar/resnet.py": "e43227b248fb3e14120e9bfd33a3b5fbcee025acdc9000379e5dcb99b17e3ec2",
+      "models/cifar/vgg.py": "88df81e3254071305235061597f305dcc098ab55ad93cfdc69c886c6f9b786ec"
+    }
+  },
+  "versions": {
+    "torch": "2.5.1+cu124",
+    "torchvision": "0.20.1+cu124",
+    "numpy": "1.26.4"
+  },
+  "device": "cuda",
+  "gpu_name": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "model_parameters": 20040522,
+  "note": "Unspecified choices are listed in docs/assumptions.md; defaults are not asserted author settings.",
+  "dataset_sha256": {
+    "cifar-10-batches-py/batches.meta": "f962466ef690d46b226450fb9aadc74ba4bc64a76aa526b5827fe4bc5c7125cb",
+    "cifar-10-batches-py/data_batch_1": "54636561a3ce25bd3e19253c6b0d8538147b0ae398331ac4a2d86c6d987368cd",
+    "cifar-10-batches-py/data_batch_2": "766b2cef9fbc745cf056b3152224f7cf77163b330ea9a15f9392beb8b89bc5a8",
+    "cifar-10-batches-py/data_batch_3": "0f00d98ebfb30b3ec0ad19f9756dc2630b89003e10525f5e148445e82aa6a1f9",
+    "cifar-10-batches-py/data_batch_4": "3f7bb240661948b8f4d53e36ec720d8306f5668bd0071dcb4e6c947f78e9682b",
+    "cifar-10-batches-py/data_batch_5": "d91802434d8376bbaeeadf58a737e3a1b12ac839077e931237e0dcd43adcb154",
+    "cifar-10-batches-py/readme.html": "4d1c3fb199d6a183ae03f5162b469d7bc04edf2fad9547bd5f224271d52f98e5",
+    "cifar-10-batches-py/test_batch": "f53d8d457504f7cff4ea9e021afcf0e0ad8e24a91f3fc42091b8adef61157831"
+  },
+  "cifar_c_sha256": {
+    "labels.npy": "e6d972b1238665d8ef54aae5affe8e292dda1eb88a6840bf0f5988cdb649da7b",
+    "gaussian_noise.npy": "269c7f8f1b896cb96cf194814171d0cfc6d73a1546cd718ba629756a906ecaf1",
+    "shot_noise.npy": "645936b5a5cf0b72151289c598b61b59429c917b346256e63d399a8c3a5ed078",
+    "impulse_noise.npy": "9eaebc6e508ebe05382c2631177ca1503f6f3aea68090c509d24506f86b1164f",
+    "defocus_blur.npy": "6140f9954d10d5c606d598ca6e26d5d94a301894e94493035f03182f551b745e",
+    "glass_blur.npy": "ec1586616c585b8f8742dc0003d9bebe07d822ed3c997b6215003d5afd66bdfa",
+    "motion_blur.npy": "34baad18726fabefeb69b5cbedefda41ee7969dbed1562740ef9e1095d5dd954",
+    "zoom_blur.npy": "a3af830b0759addce9ac555f938643f3dcf2b9fef9df7f4479750a568c62006f",
+    "snow.npy": "84d3fdf8b17e18b7657804321dc13dd260ea1151c9bc91e55e13656e5f5410f2",
+    "frost.npy": "8be9ab8d9095b3fb3ebf4dd60f0a83651be115c3ac77c8adc5b3e0d3add5ad8c",
+    "fog.npy": "48f8f040b3aa25850119400ac2afacf72affdaaa3fcdd5daff425e876f996e50",
+    "brightness.npy": "3bb5990e41b0212b62bc0b4385f4f95d68ecb94da627eacba4552381228a17c3",
+    "contrast.npy": "cb5e3765f52a172a380ce8c8c3096b78669d2f01f4f6e958ee30729f680bb9fb",
+    "elastic_transform.npy": "664626e48ed03abec17614d2c7a2cf827bc82778e2319573c73a49a99ca0b21a",
+    "pixelate.npy": "6657f75ac66c907ad8206248bc1f48bef0dac219a1617f4dfd1b15e46ccf5ac7",
+    "jpeg_compression.npy": "60bd735b9bba513df1f22adc460942de6ef03f9e5870340464db1fc7e6331d51"
+  },
+  "completed_utc": "2026-09-20T13:57:11.752810+00:00",
+  "gpu_peak_allocated_bytes": 1341356032
+}
