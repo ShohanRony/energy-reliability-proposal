@@ -1,0 +1,9 @@
+{
+  "phase": "pruned30_recovered",
+  "epoch": 13,
+  "lr": 0.001,
+  "loss": 0.001763414276242256,
+  "train_accuracy": 0.99966,
+  "examples": 50000,
+  "seconds": 73.99376555399795
+}

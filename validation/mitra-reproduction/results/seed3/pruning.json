@@ -1,0 +1,8 @@
+{
+  "method": "global_L1_conv_only_fixed_mask",
+  "target_fraction": 0.3,
+  "masked_weights": 6005664,
+  "eligible_weights": 20018880,
+  "achieved_fraction": 0.3,
+  "mask_tie_break": "torch_global_unstructured"
+}

@@ -49,17 +49,20 @@ for the architectures and reconstruction the proposal's Phase 1 work packages de
   - `results/laptop-environment.json`, `results/laptop-preflight/` — real preflight on
     this GPU: an actual forward/backward pass, loss=2.315 (sane for a fresh 10-class
     VGG), peak VRAM 472.5MB, full source/data SHA-256 provenance.
-  - `results/seed1/` — the first **complete, real** training run on this hardware:
-    160 baseline epochs + 40 pruned-recovery epochs, each epoch's loss/accuracy/wall-time
-    recorded individually under `epochs/`, plus a full CIFAR-10-C corruption-robustness
-    evaluation (`corruption_eval_report.md`, `results.json`, `metrics/`). Real finding:
-    30% pruning + recovery does not measurably change corruption robustness relative to
-    the unpruned baseline on this reconstruction (mPC/ECE track within 0.1-0.2pp at every
-    severity, 1-5). Per-example prediction arrays (`predictions/`, ~58MB) and model
-    checkpoints (~383MB) are excluded from this repo per `.gitignore` but exist locally
-    and can be shared on request.
-  - A second seed (`seed2/`) was in progress at the time of this commit and is
-    intentionally **not** included yet — only complete, verified runs are pushed here.
+  - `results/seed1/`, `results/seed2/`, `results/seed3/` — three independent,
+    **complete, real** training runs on this hardware (fresh weight init, data order,
+    and augmentation randomness per seed; same architecture/hyperparameters/CIFAR-10
+    split): 160 baseline epochs + 40 pruned-recovery epochs each, every epoch's
+    loss/accuracy/wall-time recorded individually under `epochs/`, plus a full
+    CIFAR-10-C corruption-robustness evaluation per seed (`results.json`, `metrics/`;
+    seed1 additionally has a narrative `corruption_eval_report.md`). Per-example
+    prediction arrays (`predictions/`, ~58MB/seed) and model checkpoints (~383MB/seed)
+    are excluded from this repo per `.gitignore` but exist locally and can be shared
+    on request.
+  - `results/cross_seed_report.md` — the 3-seed mean±SD analysis, sign-consistency
+    check, and paired comparison across seeds. This is the first point in this
+    validation pass where any claim about the *direction* of the pruning effect is
+    warranted; see key finding 4 below for the headline result.
   - **One fix applied to the harness itself, disclosed here for transparency**:
     `run_experiment.py` originally imported the empty top-level `models` package from
     the vendored upstream instead of `models.cifar` (upstream's own `cifar.py` does
@@ -112,12 +115,23 @@ for the architectures and reconstruction the proposal's Phase 1 work packages de
    within a normal thesis timeline. The evidence does not support that a reduced
    5-seed / ResNet-18-primary grid is *necessary* on raw compute-time grounds.
 
-4. **Real reliability result for the pruning literature this proposal engages with**:
-   the first complete VGG-19-BN reconstruction seed shows 30% global L1 pruning +
-   40-epoch recovery does not measurably change CIFAR-10-C corruption robustness or
-   calibration relative to the unpruned baseline (see
-   `mitra-reproduction/results/seed1/corruption_eval_report.md`). This is one seed, not
-   yet the paper's 3-seed mean±SD design — treat as a pilot data point, not a finding.
+4. **Real reliability result for the pruning literature this proposal engages with,
+   now at the paper's own 3-seed mean±SD design** (see
+   `mitra-reproduction/results/cross_seed_report.md` for full tables and paired
+   t-statistics):
+   - **Accuracy**: no detectable effect from 30% global L1 pruning + 40-epoch
+     recovery, clean or under CIFAR-10-C corruption. Per-seed deltas flip sign at
+     3 of 5 corruption severities, and no paired t-test (df=2) approaches the 0.05
+     critical value.
+   - **Calibration (ECE)**: weak but seed-consistent evidence that pruning slightly
+     *degrades* calibration — pruned ECE is higher than baseline ECE in **all 3
+     seeds at every severity tested, plus clean (6/6 same-direction)**. Magnitudes
+     are small (0.0004-0.013 absolute ECE) and no single severity's paired t-test
+     clears a strict per-comparison threshold at n=3, but 6/6 unanimous direction
+     would occur by chance only ~1.6% of the time under a true null — suggestive,
+     not proof, and explicitly flagged in the report as not a well-powered result.
+   - Neither conclusion should be treated as final: 3 seeds is the paper's stated
+     minimum, not a well-powered replication.
 
 ## Reproducing this work
 
