@@ -9,28 +9,38 @@ purchased at a measured energy cost that FLOPs- or latency-based reporting conce
 
 ## Files
 
-- `Shohan_Masters_Proposal_Final_v2.docx` — canonical version. Edit this one.
-- `proposal.md` — plain-text/markdown extract of the docx, auto-generated for
+- `Shohan_Masters_Proposal.pdf` — canonical version. Edit the source document and
+  re-export this one. (Supersedes the earlier `Shohan_Masters_Proposal_Final_v2.docx`,
+  which this revision replaces outright rather than incrementing — the content is a
+  substantial rewrite, not a version bump.)
+- `proposal.md` — plain-text/markdown extract of the PDF, auto-generated for
   readability and diffing across revisions. Not authoritative; regenerate from the
-  docx rather than hand-editing when the docx changes.
+  PDF rather than hand-editing when the PDF changes. Tables are kept as fenced code
+  blocks (verbatim from the PDF's text layer) rather than reformatted as markdown
+  tables, to avoid transcription errors in the numeric results they contain.
 
-## Structure (from the docx)
+## Structure (from the proposal)
 
-Three research questions (instrument validity, reliability under compression, ranking
-stability under matched measured energy) plus a Phase 2 generality question. Phase 1
-(months 1–12, committed thesis deliverable) runs three work packages — estimator
-validation (WP1), disaggregated reliability sweep (WP2), energy-banded ranking
-comparison (WP3) — on hardware already in hand. Phase 2 (months 13–24, resource- and
-supervision-dependent) adds six further work packages: language-model generalisation,
-physical power ground truth, hardware heterogeneity, scale, real-subgroup fairness
-data, and methodological formalisation.
+Four research questions — RQ1 instrument agreement (software energy estimators vs.
+hardware counters), RQ2 the recovery-training confound (Track A), RQ3 matched-energy
+selection risk (Track B), and RQ4 (Phase 2) physical/cross-platform generality — with one
+supporting hypothesis (H1) and one pre-specified primary hypothesis per Phase-1 track
+(H2, H3), tested via TOST equivalence rather than simple significance. Phase 1 (committed
+thesis deliverable) runs two tracks on hardware already in hand: Track A (months 1–6) tests
+whether the calibration effect found in the §2.3 pilot survives controlling for the pruned
+model's extra recovery-training epochs; Track B (months 4–12) tests, among real
+structurally-pruned/quantized configurations shown TOST-equivalent in measured energy,
+whether picking the most accurate one carries a hidden calibration cost. Phase 2 (months
+13–24, resource- and supervision-dependent) is one bounded extension selected with
+supervisor input, not a broad programme.
 
 ## Relationship to other repos/documents
 
 - The literature review "Energy Measurement of Compressed Deep Learning Models"
   (PDF, not in this repo) covers the energy-measurement half of this proposal's
   argument in full — the tool-validation, FLOPs-energy, and cross-platform gaps this
-  proposal's WP1 and WP3 draw on.
+  proposal's RQ1 (instrument agreement) and Track B / RQ3 (matched-energy selection
+  risk) draw on.
 - [`green-ai-proposal`](https://github.com/ShohanRony/green-ai-proposal) is a separate,
   earlier proposal-variant build system targeting six programme types on the
   energy-only argument (no reliability/calibration axis). This document is a distinct,

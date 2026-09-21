@@ -10,8 +10,8 @@ estimate and states the method used to derive them.
 This work directly closes two of the "outstanding pre-submission verification items"
 listed in the top-level [README.md](../README.md#status): the environment/hardware
 preflight, and an initial execution of the minimum-detectable-energy-difference pilot
-(WP1-adjacent). It also produces the first real training-time and reliability numbers
-for the architectures and reconstruction the proposal's Phase 1 work packages depend on.
+(RQ1-adjacent). It also produces the first real training-time and reliability numbers
+for the architectures and reconstruction the proposal's Phase 1 tracks depend on.
 
 ## What's here
 
@@ -98,8 +98,8 @@ for the architectures and reconstruction the proposal's Phase 1 work packages de
    68.7s exactly as a concurrent ResNet-18 job started and stopped), confirmed via
    `nvidia-smi` telemetry (SM clock dropped from ~1972MHz to 1627-1845MHz under
    contention; no thermal throttling — temperature stayed at 68-72°C throughout).
-   Relevant to WP1/WP3 scheduling: do not run two GPU workloads concurrently on this
-   machine and expect either measurement to be clean.
+   Relevant to Track A/Track B scheduling: do not run two GPU workloads concurrently on
+   this machine and expect either measurement to be clean.
 
 3. **Real per-epoch training costs on this hardware** (all clean, uncontended,
    telemetry-verified):
