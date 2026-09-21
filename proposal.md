@@ -6,7 +6,7 @@ and Calibration Trade-offs in Compressed Vision Models*
 **Master's Research Proposal — Two-Year Programme**
 Shohinur Pervez Shohan
 B.Sc. in Computer Science & Engineering, Rangamati Science and Technology University, Bangladesh
-Prospective Applicant, 2027 Intake
+Prospective Applicant, 2027 Intake — Version 4
 
 ## Abstract
 Making a neural network smaller can reduce the computing power it needs — but it can also
@@ -16,7 +16,7 @@ consumption remain equally trustworthy once their confidence, not just their cor
 examined under realistic image degradation such as blur, noise, and compression artefacts.
 This matters directly for anyone deploying vision models on energy- or battery-constrained
 devices: an energy saving is only useful if it does not conceal more confident mistakes.
-A three-seed pilot study, completed on the applicant’s own hardware ahead of this
+A three-seed pilot study, completed on the applicant's own hardware ahead of this
 application, already shows a small but directionally consistent signal in exactly this direction
 — compressed models miscalibrated relative to a dense baseline, contradicting the specific
 direction reported by the closest prior study. This proposal sets out the confirmatory design
@@ -48,7 +48,7 @@ answer may be yes, and sets out the confirmatory design that follows.
 
 ## 2. Preliminary Work and Evidence to Date
 
-This section reports work already completed on the applicant’s own hardware, prior to
+This section reports work already completed on the applicant's own hardware, prior to
 submission. It exists because an earlier version of this proposal made a claim about
 completed pilot work without supplying evidence — a fault identified in review and
 corrected here by reporting only what was actually run, with real output values, on real data.
@@ -101,7 +101,7 @@ inspection or profiler traces rather than timing alone.
                                 committed scope          (only mobilenet_v3_large has one); would require
                                                          custom model surgery
 
- INT8, GPU (either              Dropped — confirmed      fbgemm-quantized model segfaults on .to(“cuda”)
+ INT8, GPU (either              Dropped — confirmed      fbgemm-quantized model segfaults on .to("cuda")
  architecture)                  dead end                 (exit 139). ONNX Runtime + TensorRT:
                                                          CUDA/TensorRT execution providers silently fall
                                                          back to CPU despite being listed as available, due
@@ -145,8 +145,8 @@ Mitra, Schwalbe & Klein (2024) is the closest existing work to this thesis (§4.
 protocol — VGG-19-BN, CIFAR-10, global unstructured L1 conv-weight pruning at 30%, 160
 baseline epochs followed by 40 recovery epochs — was independently reconstructed and
 run to completion for three seeds, with full clean and CIFAR-10-C (15 corruptions × 5
-severities) evaluation. This is not the authors’ released code; it is an independent
-implementation built from their paper’s stated methodology, with full source and data
+severities) evaluation. This is not the authors' released code; it is an independent
+implementation built from their paper's stated methodology, with full source and data
 provenance (SHA-256 hashes, commit references) recorded for every run.
 
 ```
@@ -172,23 +172,17 @@ provenance (SHA-256 hashes, commit references) recorded for every run.
                                                                                      conditions
 ```
 
-The calibration direction is the result that survives replication. Across the clean
-condition and all five corruption severities — six independent comparisons — every one
-shows the pruned-and-recovered model less well calibrated than the dense baseline, in
-every one of three seeds. Under a null hypothesis of no systematic direction, six
-independent same-direction outcomes has probability (½)⁶ ≈ 0.016. No individual per-
-severity paired t-test (df = 2) clears the conventional critical value at this seed count, and the
-magnitudes are small (absolute ECE differences of 0.0004–0.013); this is reported as
-suggestive directional evidence from a 3-seed pilot, not a confirmed effect, and is precisely
-why a 10-seed confirmatory design is proposed (§6) rather than presented as already
-established.
+The calibration gap was in the same direction across all three seeds and all six conditions
+(the clean condition and five corruption severities). This is directionally consistent
+descriptive evidence only: the three-seed sample is too small to support a formal statistical
+test, which is exactly why the Phase 1 confirmatory design uses 10 seeds (§6).
 This directly contradicts the direction Mitra et al. report — that post-hoc pruning can
 improve calibration and corruption robustness simultaneously. One plausible, testable
-explanation for the discrepancy is protocol-level: in Mitra et al.’s design, the pruned model
+explanation for the discrepancy is protocol-level: in Mitra et al.'s design, the pruned model
 receives 40 additional epochs of recovery training that the baseline, as described, does not
 receive. If a dense model given the same 40 additional epochs shows comparable
 calibration change, the reported improvement may be partly attributable to extra training
-rather than to pruning itself — the same class of finding as the applicant’s undergraduate
+rather than to pruning itself — the same class of finding as the applicant's undergraduate
 thesis, where a validation-design choice, not the algorithm, determined the reported
 conclusion (§10). This is the central confirmatory hypothesis of Phase 1 (§6, H2), not yet
 resolved, and is proposed precisely because the preliminary evidence above is directional
@@ -253,7 +247,7 @@ GPU-clock diagnostic above:
  MobileNetV3-Small (thesis architecture)   7.08s (SD 0.16s)       0.39h         3.9h (0.16 days)
 ```
 
-Total sequential GPU time for the thesis’s own confirmatory training grid (ResNet-18 +
+Total sequential GPU time for the thesis's own confirmatory training grid (ResNet-18 +
 MobileNetV3-Small, 10 seeds each): approximately 30.4 hours ≈ 1.3 days , unattended,
 measured directly rather than estimated — comfortably within a normal thesis schedule,
 with real margin for reruns.
@@ -296,8 +290,8 @@ finds compression preserving or improving corruption robustness under different
 conditions (Diffenderfer et al., 2021; da Silva et al., 2025). These are context-dependent
 effects — obtained under different training procedures, compression intensities, and forms
 of distribution shift — rather than a strict contradiction resolvable by any single additional
-study; this proposal’s own reconstruction (§2.3) adds one more controlled data point in this
-space, under a protocol close enough to Mitra et al.’s to be directly informative about that
+study; this proposal's own reconstruction (§2.3) adds one more controlled data point in this
+space, under a protocol close enough to Mitra et al.'s to be directly informative about that
 specific comparison.
 
 ## 4. Related Work
@@ -333,7 +327,7 @@ different application domain, without a multi-family compression sweep or energy
 measurement. Yuan et al. (2023) examined PTQ reliability with attention to calibration-set
 distribution and worst-case subgroup performance; Williams & Aletras (2023) established
 that calibration-data selection substantially affects compressed-model task performance —
-a distinct concept from probability calibration, and a confound this proposal’s own
+a distinct concept from probability calibration, and a confound this proposal's own
 reconstruction (§2.3) is designed to isolate rather than assume away. Kamal & Talbert (2025)
 introduced faithfulness metrics beyond accuracy for compressed models on socially
 meaningful datasets, without energy measurement.
@@ -478,8 +472,8 @@ Analysis. H2 is tested via TOST with the pre-specified ±0.010 absolute ECE marg
 worst-minus-mean classwise gap is reported as a secondary, exploratory quantity,
 distinguished explicitly from worst-class error alone — the gap can rise because other
 classes improve, not because the worst class worsens, and the two are not conflated.
-Output: a standalone finding, publishable independent of Track B’s outcome — either the
-training-time confound explains Mitra et al.’s reported direction, or pruning has an effect
+Output: a standalone finding, publishable independent of Track B's outcome — either the
+training-time confound explains Mitra et al.'s reported direction, or pruning has an effect
 beyond it. Both are informative results.
 
 ## 8. Phase 1, Track B — Matched-Energy Selection Risk (Months 4–12)
@@ -522,7 +516,7 @@ which the higher-accuracy member shows worst-class ECE degradation exceeding the
 specified 0.010 absolute threshold.
 Robustness metric, matching §2.3. Mean-per-corruption accuracy (mPC), averaged per
 severity over all 15 standard CIFAR-10-C corruptions — not normalised mCE, for direct
-comparability with the Track A reconstruction and with Mitra et al.’s own reported metric.
+comparability with the Track A reconstruction and with Mitra et al.'s own reported metric.
 Timing and exclusion rules. Fixed batch size 64; warm-up passes discarded; a deterministic
 idle–active–idle measurement window (10s settling either side); background load logged;
 invalid runs (OOM, throttling detected via the clock-ceiling diagnostic of §2.4, failed
@@ -531,12 +525,12 @@ rule fixed in advance, never post hoc.
 Multiplicity. H2 and H3 are the two pre-specified primary tests in this proposal. All ranking
 or ordering analysis beyond the specific pair-comparison in H3 (e.g. a full cross-
 configuration Kendall correlation) is exploratory, reported with Holm correction, and not
-used to support the thesis’s central claim.
+used to support the thesis's central claim.
 
 ## 9. Timeline
 
 Note on research activity alongside coursework. The plan below sets out the research
-programme itself. In taught Master’s programmes, coursework typically runs alongside —
+programme itself. In taught Master's programmes, coursework typically runs alongside —
 particularly in year one — so research activity proceeds at reduced intensity during teaching
 periods and intensifies during dedicated thesis time. The preliminary work reported in §2
 was deliberately produced ahead of enrolment for this reason: it reduces what remains to
@@ -582,14 +576,14 @@ treated as a completion requirement.
 Slippage plan. If Track A overruns, seed count for the dense-control arm is reduced to 5
 with the reduction reported, not silently absorbed. If Track B overruns, the MobileNetV3-
 Small arm is retained in full and the ResNet-18 INT8 arm is reported as incomplete rather
-than dropped without disclosure. Track B’s core structural-pruning comparison is never cut
+than dropped without disclosure. Track B's core structural-pruning comparison is never cut
 — it is the thesis question.
 
 ## 10. Phase 2 — One Bounded Extension (Months 13–24)
 
 Phase 1 is presented as a complete, publishable thesis on its own. Phase 2 is not a catalogue
 of possible directions; it is one extension, to be selected jointly with a supervisor based on
-Phase 1’s actual findings and the specific resources and expertise available in their group.
+Phase 1's actual findings and the specific resources and expertise available in their group.
 Four candidate extensions are described below with the specific resource each requires; the
 applicant proposes to adopt exactly one.
 
@@ -601,8 +595,8 @@ and §6 (RQ1), converting it into genuine independent physical validation.
 
 Candidate: cross-platform generality
 Requires: access to at least one additional accelerator class (e.g. a server GPU with genuine
-sparse-kernel support, or an embedded/edge device). Tests whether Track B’s conclusions
-are specific to this consumer GPU’s lack of sparsity acceleration (§2.2) or generalise.
+sparse-kernel support, or an embedded/edge device). Tests whether Track B's conclusions
+are specific to this consumer GPU's lack of sparsity acceleration (§2.2) or generalise.
 
 Candidate: modality generalisation
 Requires: compute beyond the 6GB ceiling used throughout Phase 1, and domain
@@ -612,7 +606,7 @@ occupies adjacent LLM-compression territory; the differentiator remains classwis
 probability calibration and measured energy, neither of which that work reports.
 
 Candidate: real subgroup fairness
-Requires: dataset access, ethics approval, and institutional affiliation. Phase 1’s per-class
+Requires: dataset access, ethics approval, and institutional affiliation. Phase 1's per-class
 analysis is a legitimate but distinct question from fairness across real demographic groups,
 which needs data an unaffiliated individual cannot access.
 
@@ -656,8 +650,8 @@ backed by output already produced, not projected.
 Technical background. Python, PyTorch, scikit-learn, pandas, NumPy, OpenCV; the full
 measurement and training harness described in §2 was built, debugged, and validated
 independently, including diagnosing and fixing one packaging bug in the reconstruction
-scaffold and one measurement-configuration error in the energy harness’s default settings.
-Methodological background. The applicant’s undergraduate thesis reconstructed three
+scaffold and one measurement-configuration error in the energy harness's default settings.
+Methodological background. The applicant's undergraduate thesis reconstructed three
 decades of land-cover change from satellite imagery using multiple classifiers under
 spatially-blocked rather than random validation. That single design choice reversed the
 headline conclusion, while the choice of classifier moved the result by roughly five
@@ -669,7 +663,7 @@ finding — is the direct origin both of this proposal and of the specific confo
 now proposes to test (§2.3, §6, H2). The subject matter has changed; the disposition has not.
 What scholarship support enables. Existing hardware allows preliminary work to continue
 independently, as §2 demonstrates. Scholarship support provides sustained research time
-free of the applicant’s current full-time employment, formal statistical and methodological
+free of the applicant's current full-time employment, formal statistical and methodological
 training, and supervision to carry the confirmatory design in §6–§8 through to completion
 and, in Phase 2, to extend it into regimes (physical instrumentation, larger-scale compute,
 real demographic data) that are not reachable independently. The applicant intends to
@@ -705,7 +699,7 @@ statistical methods (TOST, paired testing, sign-test framing, as used throughout
                                       across both tracks) is a direct hardware measurement, not an
                                       estimate; the slippage plan (§9) specifies exactly what is cut first.
 
- Concurrent work occupies the         Track A’s first result depends only on already-completed infrastructure
+ Concurrent work occupies the         Track A's first result depends only on already-completed infrastructure
  space                                and is the fastest output (month 4); early preprinting establishes
                                       priority.
 ```
@@ -719,11 +713,11 @@ sustained time free of full-time employment, formal training in the statistical 
 design already uses at an applied level, and — for Phase 2 specifically — access to physical
 instrumentation, additional hardware platforms, or demographic data that cannot be
 acquired independently.
-The specific request: supervision of a Master’s thesis testing whether a reported
+The specific request: supervision of a Master's thesis testing whether a reported
 compression–calibration relationship survives a training-time confound (Track A), and
 whether compression-method selection at matched measured energy carries a reliability
 risk not visible under standard accuracy-only comparison (Track B) — with the direction of
-the final year’s single extension (§10) to be agreed jointly once Phase 1’s findings are in.
+the final year's single extension (§10) to be agreed jointly once Phase 1's findings are in.
 
 ## References
 Aquino-Brítez, A., García-Sánchez, P., & Ortíz, A. (2025). Towards an energy consumption index
@@ -738,8 +732,8 @@ da Silva, I. W. D., Pereira, E., Barboza, E. de A., dos S. Neto, B. F., & Ribeir
      Evaluating the impact of compression techniques on the robustness of CNNs under
      natural corruptions. ICMLA 2025. DOI: 10.1109/ICMLA66185.2025.00055
 de Paula, E., Soni, J., Upadhyay, H., & Lagos, L. (2025). Comparative analysis of model
-    compression techniques for achieving carbon efficient AI. Scientific Reports. DOI:
-    10.1038/s41598-025-07821-w
+    compression techniques for achieving carbon efficient AI. Scientific Reports, 15, 23461.
+    DOI: 10.1038/s41598-025-07821-w
 Deutel, M., Woller, P., & Mutschler, C. (2022). Deployment of energy-efficient deep learning
     models on Cortex-M based microcontrollers using deep compression. arXiv:2205.10369
 Diffenderfer, J., Bartoldson, B., Chaganti, S., et al. (2021). A winning hand: compressing deep
@@ -762,8 +756,9 @@ Huber, P., Göhner, U., & Trapp, M. (2025). Comprehensive analysis of neural net
     25(15), 4769. DOI: 10.3390/s25154769
 Kamal, M., & Talbert, D. (2025). Downsized and compromised? Assessing the faithfulness of
    model compression. arXiv:2510.06125
-Kocher, M., et al. (2025). Guidelines for the quality assessment of energy-aware NAS
-    benchmarks. Leibniz Universität Hannover.
+Kocher, N., Wassermann, C., Hennig, L., Seng, J., Hoos, H. H., Kersting, K., Lindauer, M., &
+    Müller, M. (2025). Guidelines for the quality assessment of energy-aware NAS
+    benchmarks. arXiv:2505.15631
 Mitra, P., Schwalbe, G., & Klein, N. (2024). Investigating calibration and corruption robustness
      of post-hoc pruned perception CNNs: an image classification benchmark study. CVPR
      Workshops, 3542–3552. DOI: 10.1109/CVPRW63382.2024.00358; arXiv:2405.20876
@@ -778,8 +773,8 @@ Rojahn, M., & Grum, M. (2025). Green AI: a systematic review and meta-analysis o
     definitions, lifecycle models, hardware and measurement attempts. arXiv:2511.07090
 Shen, L., Edalati, A., Meyer, B. H., Gross, W. J., & Clark, J. J. (2024). Robustness to distribution
     shifts of compressed networks for edge devices. arXiv:2401.12014
-Tran, C., Fioretto, F., & Kim, J. (2022). Pruning has a disparate impact on model accuracy.
-     arXiv:2205.13574
+Tran, C., Fioretto, F., Kim, J.-E., & Naidu, R. (2022). Pruning has a disparate impact on model
+     accuracy. NeurIPS 2022. arXiv:2205.13574
 Tripp, C., Perr-Sauer, J., Gafur, J., Nag, A., Purkayastha, A., Zisman, S., & Bensen, E. (2024).
      Measuring the energy consumption and efficiency of deep neural networks: an empirical
      analysis and design recommendations (BUTTER-E). arXiv:2403.08151; dataset DOI:
